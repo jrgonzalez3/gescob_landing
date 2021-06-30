@@ -32,11 +32,9 @@
 
 ========================================================*/
 
-<<<<<<< HEAD
-@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700");
-=======
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
->>>>>>> a6eb23700e7f60df02533d9c3120681a5709d3c8
+
 
 /*=======================================================
 			BODY:
@@ -868,8 +866,4 @@ border-radius: 15px;
 .price-table i.fa.fa-check {
     border-bottom-style: outset;
     margin-right: 10px;
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> a6eb23700e7f60df02533d9c3120681a5709d3c8
+ }   
