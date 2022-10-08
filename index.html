@@ -100,6 +100,10 @@
                         <li class="nav-item">
                             <a class="nav-link page-scroll" href="#contact">Contacto</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="https://wa.link/p70m70" target="_blank">WhatsApp
+                                Directo</a>
+                        </li>
                     </ul>
 
                 </div>
@@ -557,30 +561,32 @@
 
             <!-- /// CONTACT FORMS /// -->
 
-            <form>
+            <form method="Post" action="#" name="FormMail" id="FormMail">
                 <div class="form-row">
                     <div class="form-group col-xs-12 col-sm-4">
-                        <label>Nombre:</label>
-                        <input type="text" class="form-control" id="inputName4">
+                        <label>Nombres y Apellidos:</label>
+                        <input type="text" name="nombre" class="form-control" id="inputName4">
                     </div>
                     <div class="form-group col-xs-12 col-sm-4">
                         <label for="inputPassword4">Email:</label>
-                        <input type="email" class="form-control" id="inputPassword4">
+                        <input type="email" name="email" class="form-control" id="inputPassword4">
                     </div>
                     <div class="form-group col-xs-12 col-sm-4">
                         <label>Teléfono:</label>
-                        <input type="text" class="form-control" id="inputPhone">
+                        <input type="text" name="telefono" class="form-control" id="inputPhone">
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Asunto:</label>
-                    <input type="text" class="form-control" id="inputSubject">
+                    <input type="text" name="asunto" class="form-control" id="inputSubject">
                 </div>
                 <div class="form-group">
                     <label>Mensaje:</label>
-                    <textarea id="form-message" cols="30" rows="5" class="form-control"></textarea>
+                    <textarea id="form-message" name="mensaje" cols="30" rows="5" class="form-control"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <div id="result" class="result"></div>
+
+                <button type="submit" id="btnSend" class="btn btn-primary">Enviar</button>
             </form>
             <section id="about">
                 <div class="container">
@@ -616,8 +622,8 @@
             </section>
 
         </div>
-        <p>&copy; 2015 - 2021 | Sistemas y Sitios Web | <a class="link" href="https://jringenieriayservicios.com/"
-                rel="nofollow">J.R. Ingeniería y Servicios</a></p>
+        <p>&copy; 2015 - 2021 | Sistemas y Sitios Web | <a class="link" href="https://jringenieriayservicios.com/">J.R.
+                Ingeniería y Servicios</a></p>
 
     </section>
 
@@ -641,7 +647,30 @@
     <script src="./js/plugins/jquery.easing.min.js"></script>
     <!-- Main JS -->
     <script src="./js/main.js"></script>
-
+    <script>
+        $("#FormMail").on("submit", function (e) {
+            e.preventDefault();
+            var nombre = $('[name="nombre"]').val();
+            var email = $('[name="email"]').val();
+            var telefono = $('[name="telefono"]').val();
+            var asunto = $('[name="asunto"]').val();
+            var mensaje = $('[name="mensaje"]').val();
+            $.ajax({
+                url: "enviarmail.php",
+                data: JSON.stringify({ nombre, email, telefono, asunto, mensaje }), //data que sera enviada
+                type: "POST",
+                beforeSend: function (objeto) {
+                    $('#result').html(
+                        '<img src="imgs/ajax-loader.gif"> Enviando...');
+                    $("#btnSend").prop('disabled', true);
+                },
+                success: function (resp) {
+                    $("#result").html(resp);
+                    $('#btnSend').prop('disabled', false);
+                }
+            });
+        })
+    </script>
 </body>
 
 </html>
