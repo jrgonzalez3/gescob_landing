@@ -14,8 +14,8 @@ $m->SMTPSecure = "tsl"; //tls o ssl
 $m->Port = 587;
 $m->AddAddress('jrgonzalez3@gmail.com');
 $m->addReplyTo($arr['email']);
-$m->Subject = "Contacto de  Gescob Online sobre " . $arr['asunto'];
-$m->MsgHTML(nl2br("Buenas, quiero saber mas datos de Gescob Online, mi mensaje es " . $arr['mensaje']));
+$m->Subject = $arr['asunto'];
+$m->MsgHTML(nl2br($arr['mensaje']));
 if ($m->Send()) {
     $result = 'Tu mensaje ha sido enviado. Gracias, Si deseas una respuesta mas rapida, tambien puedes escribirnos al  <a class="btn btn-transparent" href="https://wa.link/p70m70" target="_blank">WhatsApp Directo</a>';
 } else {
