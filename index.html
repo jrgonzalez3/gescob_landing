@@ -586,7 +586,9 @@
                 </div>
                 <div id="result" class="result"></div>
 
+                <div class="g-recaptcha" data-sitekey="6LdXamkiAAAAAOrGwstsRJ-dJ6hpiwOXrnQOxyTw"></div>
                 <button type="submit" id="btnSend" class="btn btn-primary">Enviar</button>
+
             </form>
             <section id="about">
                 <div class="container">
@@ -647,6 +649,7 @@
     <script src="./js/plugins/jquery.easing.min.js"></script>
     <!-- Main JS -->
     <script src="./js/main.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
         $("#FormMail").on("submit", function (e) {
             e.preventDefault();
